@@ -3,13 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiKey: "AIzaSyDhF3urK7ylXXR_ozIGkzLL1uCoWv5R990",
-  authDomain: "docker-visualizer-app.firebaseapp.com",
-  databaseURL: "https://docker-visualizer-app.firebaseio.com",
-  projectId: "docker-visualizer-app",
-  storageBucket: "docker-visualizer-app.appspot.com",
-  messagingSenderId: "225336904002",
-  production: false
+
 };
 /*
  * For easier debugging in development mode, you can import the following file
