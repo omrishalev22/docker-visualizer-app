@@ -3,7 +3,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { DockerImageCreatorService } from '../create-docker-graph/docker.image.creator.service';
+import { DockerImageCreatorService } from './docker.image.creator.service';
 
 
 @Component({

@@ -15,6 +15,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { DropZoneDirective } from './drop-zone.directive';
 import { FileSizePipe } from './file-size.pipe';
+import { DockerImageCreatorService } from './file-upload/docker.image.creator.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,10 @@ import { FileSizePipe } from './file-size.pipe';
     AngularFireModule.initializeApp(environment),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DockerImageCreatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
