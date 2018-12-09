@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { DockerImageCreatorService } from './docker.image.creator.service';
+import {Component, OnInit} from '@angular/core';
+import {AngularFireStorage, AngularFireUploadTask} from 'angularfire2/storage';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DockerImageCreatorService} from './docker.image.creator.service';
 
 
 @Component({
@@ -66,12 +66,14 @@ export class FileUploadComponent {
                 if (snap.bytesTransferred === snap.totalBytes) {
                     // Update firestore on completion
                     this.db.collection('photos').add({path, size: snap.totalBytes})
-                    this.downloadURL = this.storage.ref(snap.metadata.fullPath).getDownloadURL();
-                    // sending image over the server to create PNG out of the file
-                    this.dockerCreationService.createDockerImage(this.downloadURL).subscribe(res => {
-                        console.log(res);
-                        // TODO -> delete the image from firebase storage;
-                    })
+                    this.storage.ref(snap.metadata.fullPath).getDownloadURL().subscribe((url) => {
+                        // sending image over the server to create PNG out of the file
+                        this.dockerCreationService.createDockerImage(url).subscribe(res => {
+                            console.log('asdsadsadsadsadasdsadsadsad', res);
+                            // TODO -> delete the image from firebase storage;
+                        })
+                    });
+
 
                 }
             })

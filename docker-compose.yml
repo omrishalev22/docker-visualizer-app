@@ -1,0 +1,34 @@
+version: "3"
+services:
+  client:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./web:/app
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    restart: on-failure
+  docker-visualizer-app:
+    build:
+      context: ./docker-visualizer-api
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    volumes:
+      - /app/node_modules
+      - ./docker-visualizer-api:/app
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - "3050:80"
+
+
